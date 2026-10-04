@@ -16,6 +16,7 @@ import os
 
 env = SConscript("godot-cpp/SConstruct")
 env.Append(CPPPATH=["src/"])
+env["SHLIBPREFIX"] = ""
 sources = Glob("src/*.cpp")
 
 suffix = ".{}.{}".format(env["platform"], env["target"])

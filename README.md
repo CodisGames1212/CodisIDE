@@ -140,7 +140,8 @@ The existing app and serial extension sources are preserved.
 
 Download artifacts from the repository's Actions tab. Push a `v*` tag to publish
 all successful app artifacts as a GitHub Release. iOS artifacts require an Apple
-team, provisioning and signing in Xcode before installation. Android release
+team, provisioning and signing in Xcode before installation. Replace the
+`REPLACEME0` team placeholder in the generated Xcode project with your Apple team. Android release
 APKs require signing before installation. macOS packages are unsigned and not
 notarized. Web needs an HTTP server; browser sandboxes restrict local tools,
 filesystem access and serial devices. Export support does not imply full desktop

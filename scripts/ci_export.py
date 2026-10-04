@@ -26,5 +26,14 @@ out = root / "dist" / paths[args.platform]
 out.parent.mkdir(parents=True, exist_ok=True)
 subprocess.run([args.godot, "--headless", "--editor", "--import", "--path", str(root)], check=True)
 subprocess.run([args.godot, "--headless", "--path", str(root), "--export-release", args.platform, str(out)], check=True)
+if args.platform == "iOS":
+    project = out.with_suffix(".xcodeproj")
+    if not project.is_dir():
+        raise SystemExit(f"Export did not create {project}")
+    # Project-only exports produce a directory, even when the destination ends in .zip.
+    stage = root / "dist/ios-project"
+    shutil.copytree(out.parent, stage, dirs_exist_ok=True)
+    shutil.make_archive(str(out.with_suffix("")), "zip", stage)
+    shutil.rmtree(stage)
 if not out.is_file():
     raise SystemExit(f"Export did not create {out}")
