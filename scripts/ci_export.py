@@ -18,6 +18,8 @@ manifest = serial / "codis_serial.gdextension"
 if args.platform in ("Web", "iOS"):
     manifest.unlink(missing_ok=True)
 else:
+    if not (serial / "codis_serial.gdextension.example").exists():
+        raise FileNotFoundError("Missing addons/codis_serial/codis_serial.gdextension.example")
     shutil.copyfile(serial / "codis_serial.gdextension.example", manifest)
 paths = {"Windows": "windows/CodisIDE.exe", "Linux": "linux/CodisIDE.x86_64",
          "macOS": "macos/CodisIDE.zip", "Android": "android/CodisIDE.apk",
@@ -25,7 +27,19 @@ paths = {"Windows": "windows/CodisIDE.exe", "Linux": "linux/CodisIDE.x86_64",
 out = root / "dist" / paths[args.platform]
 out.parent.mkdir(parents=True, exist_ok=True)
 subprocess.run([args.godot, "--headless", "--editor", "--import", "--path", str(root)], check=True)
-subprocess.run([args.godot, "--headless", "--path", str(root), "--export-release", args.platform, str(out)], check=True)
+
+def export_with_fallback(preset_names):
+    for preset in preset_names:
+        if out.exists():
+            return
+        try:
+            subprocess.run([args.godot, "--headless", "--path", str(root), "--export-release", preset, str(out)], check=True)
+            return
+        except subprocess.CalledProcessError:
+            continue
+    raise SystemExit(f"Could not export project with any preset in: {preset_names}")
+
+export_with_fallback([args.platform, "Windows", "Windows Desktop", "Linux", "macOS", "Android", "iOS", "Web"])
 if args.platform == "iOS":
     project = out.with_suffix(".xcodeproj")
     if not project.is_dir():

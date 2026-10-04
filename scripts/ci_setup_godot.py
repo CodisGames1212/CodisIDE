@@ -19,7 +19,10 @@ with zipfile.ZipFile(editor) as archive:
 if system == "Darwin":
     executable = cache / "Godot.app/Contents/MacOS/Godot"
 else:
-    executable = next(cache.glob("Godot_*" + (".exe" if system == "Windows" else ".x86_64")))
+    matches = sorted(cache.glob("Godot*"))
+    executable = next((p for p in matches if p.suffix == ".exe" or p.name.endswith(".x86_64") or p.name.endswith(".x86_64.exe")), None)
+    if executable is None:
+        raise FileNotFoundError(f"Could not find a Godot executable in {cache}")
 executable.chmod(0o755)
 if system == "Windows":
     dest = Path(os.environ["APPDATA"]) / "Godot/export_templates"
@@ -27,6 +30,7 @@ elif system == "Darwin":
     dest = Path.home() / "Library/Application Support/Godot/export_templates"
 else:
     dest = Path.home() / ".local/share/godot/export_templates"
+dest.mkdir(parents=True, exist_ok=True)
 templates = cache / "templates.tpz"
 urllib.request.urlretrieve(base + f"Godot_v{version}-stable_export_templates.tpz", templates)
 with zipfile.ZipFile(templates) as archive:
