@@ -1,0 +1,537 @@
+[gd_scene format=3 uid="uid://6spv5vfcd2wc"]
+
+[ext_resource type="Script" uid="uid://dc1f574au4w5n" path="res://CodisIDE/scripts/main_control.gd" id="1_pmne7"]
+[ext_resource type="Texture2D" uid="uid://djrahu8l712kc" path="res://CodisIDE/assets/textures/CodisIDE_Icons.png" id="1_voib2"]
+[ext_resource type="Script" uid="uid://cq0rva1wy3a8t" path="res://CodisIDE/scripts/code_editor.gd" id="3_jjbkt"]
+[ext_resource type="PackedScene" uid="uid://bms8861v1s62p" path="res://CodisIDE/scenes/custom_dropdown.tscn" id="3_qtsi8"]
+[ext_resource type="Script" uid="uid://7v1jnrafj4bi" path="res://CodisIDE/scripts/board_manager.gd" id="4_ped2n"]
+[ext_resource type="Script" uid="uid://c1war0xjo4e1x" path="res://CodisIDE/scripts/library_manager.gd" id="5_kbsv5"]
+[ext_resource type="Script" uid="uid://cyonrqq4pigll" path="res://CodisIDE/scripts/ai_ask.gd" id="7_urw1y"]
+[ext_resource type="Script" uid="uid://bmjxs5eml3q0p" path="res://CodisIDE/scripts/ai_assistant.gd" id="7_wk43d"]
+[ext_resource type="PackedScene" uid="uid://k5p6vrn1wkun" path="res://CodisIDE/scenes/ai_recent.tscn" id="8_1kh42"]
+[ext_resource type="PackedScene" uid="uid://c1chi2jb6412m" path="res://CodisIDE/scenes/model_list.tscn" id="9_v3ao4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjbkt"]
+content_margin_top = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_urw1y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wk43d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kh42"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3ao4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68cbr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qnme0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnme0"]
+atlas = ExtResource("1_voib2")
+region = Rect2(8.593155, 7.190936, 90.1633, 80.692566)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtsi8"]
+atlas = ExtResource("1_voib2")
+region = Rect2(108.68498, 6.528369, 86.36116, 82.6547)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbsv5"]
+atlas = ExtResource("1_voib2")
+region = Rect2(198.15584, 7.918254, 87.461105, 82.12042)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjbkt"]
+atlas = ExtResource("1_voib2")
+region = Rect2(294.24747, 8.982689, 98.81479, 81.850876)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urw1y"]
+atlas = ExtResource("1_voib2")
+region = Rect2(503.9411, 240.82944, 94.17157, 88.919495)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk43d"]
+atlas = ExtResource("1_voib2")
+region = Rect2(506.48566, 8.3641, 87.461105, 82.12042)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kh42"]
+atlas = ExtResource("1_voib2")
+region = Rect2(606.85535, 7.5680313, 88.93445, 85.78729)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ped2n"]
+atlas = ExtResource("1_voib2")
+region = Rect2(347.38092, 139.56941, 45.35486, 46.009216)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rifht"]
+atlas = ExtResource("1_voib2")
+region = Rect2(284.6107, 136.06448, 52.253723, 50.402283)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxkeg"]
+atlas = ExtResource("1_voib2")
+region = Rect2(272.14905, 235.29265, 102.16986, 93.702774)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyd7f"]
+atlas = ExtResource("1_voib2")
+region = Rect2(199.70146, 6.8773956, 81.38002, 83.36193)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja5wp"]
+atlas = ExtResource("1_voib2")
+region = Rect2(627.3004, 377.73914, 71.88422, 82.97168)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7n0d"]
+atlas = ExtResource("1_voib2")
+region = Rect2(606.6067, 7.813469, 88.17609, 83.346344)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbvq2"]
+atlas = ExtResource("1_voib2")
+region = Rect2(97.69831, 234.85475, 83.84435, 81.94084)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk43d"]
+content_margin_left = 20.0
+content_margin_top = 8.0
+content_margin_right = 20.0
+content_margin_bottom = 8.0
+bg_color = Color(0.06811081, 0.06811082, 0.06811078, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmne7"]
+atlas = ExtResource("1_voib2")
+region = Rect2(11.318108, 124.24529, 74.13889, 77.03527)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
+atlas = ExtResource("1_voib2")
+region = Rect2(97.98907, 123.6947, 78.20704, 76.2027)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3ao4"]
+atlas = ExtResource("1_voib2")
+region = Rect2(273.20233, 127.09511, 76.95654, 73.278244)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68cbr"]
+atlas = ExtResource("1_voib2")
+region = Rect2(273.20233, 127.09511, 76.95654, 73.278244)
+
+[node name="MainControl" type="Control" unique_id=1951713188]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pmne7")
+
+[node name="BackgroundColor" type="ColorRect" parent="." unique_id=148879686]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="." unique_id=1686783759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 11.0
+offset_right = -13.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Control" unique_id=60604814]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/tab_separation = 20
+theme_override_constants/icon_max_width = 40
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jjbkt")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_urw1y")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_wk43d")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_1kh42")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_v3ao4")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_68cbr")
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_qnme0")
+tab_alignment = 1
+current_tab = 5
+tab_0/icon = SubResource("AtlasTexture_qnme0")
+tab_1/icon = SubResource("AtlasTexture_qtsi8")
+tab_2/icon = SubResource("AtlasTexture_kbsv5")
+tab_3/icon = SubResource("AtlasTexture_jjbkt")
+tab_4/icon = SubResource("AtlasTexture_urw1y")
+tab_5/icon = SubResource("AtlasTexture_wk43d")
+tab_6/icon = SubResource("AtlasTexture_1kh42")
+
+[node name="CodeEditor" type="TabContainer" parent="Control/TabContainer" unique_id=743912051]
+visible = false
+layout_mode = 2
+drag_to_rearrange_enabled = true
+script = ExtResource("3_jjbkt")
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="OutputTerminal" type="TextEdit" parent="Control/TabContainer" unique_id=380618465]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="SerialMonitor" type="VBoxContainer" parent="Control/TabContainer" unique_id=1842095102]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/SerialMonitor" unique_id=253978577]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=420785166]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=786190450]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Input message"
+
+[node name="CustomDropdown" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=98558066 instance=ExtResource("3_qtsi8")]
+custom_minimum_size = Vector2(150, 40)
+custom_maximum_size = Vector2(150, -1)
+layout_mode = 2
+items = Array[String](["No Line Editing", "New Line", "Carriage Return", "Both NL & CR"])
+selected_index = 1
+button_width = 150.0
+popup_width = 150.0
+
+[node name="CustomDropdown2" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=999082430 instance=ExtResource("3_qtsi8")]
+custom_minimum_size = Vector2(120, 40)
+custom_maximum_size = Vector2(120, -1)
+layout_mode = 2
+items = Array[String](["300 baud", "600 baud", "750 baud", "1200 baud", "2400 baud", "4800 baud", "9600 baud", "19200 baud", "31250 baud", "38400 baud", "57600 baud", "74880 baud", "155200 baud", "230400 baud", "250000 baud", "460800 baud", "500000 baud", "921600 baud", "1000000 baud", "2000000 baud"])
+button_width = 120.0
+popup_width = 150.0
+
+[node name="Autoscroll" type="CheckButton" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=908869224]
+custom_maximum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/icon_max_width = 30
+theme_override_icons/checked = SubResource("AtlasTexture_ped2n")
+theme_override_icons/unchecked = SubResource("AtlasTexture_rifht")
+
+[node name="TimeStamp" type="CheckButton" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=1135261600]
+custom_maximum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/icon_max_width = 30
+theme_override_icons/checked = SubResource("AtlasTexture_ped2n")
+theme_override_icons/unchecked = SubResource("AtlasTexture_rifht")
+
+[node name="ClearOutput" type="CheckButton" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=685105650]
+custom_maximum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/icon_max_width = 30
+theme_override_icons/checked = SubResource("AtlasTexture_ped2n")
+theme_override_icons/unchecked = SubResource("AtlasTexture_rifht")
+
+[node name="CopyOutput" type="CheckButton" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=1979993453]
+custom_maximum_size = Vector2(40, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/icon_max_width = 30
+theme_override_icons/checked = SubResource("AtlasTexture_ped2n")
+theme_override_icons/unchecked = SubResource("AtlasTexture_rifht")
+
+[node name="HSeparator2" type="HSeparator" parent="Control/TabContainer/SerialMonitor/HBoxContainer" unique_id=757536788]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="SerialPlotter" type="TabBar" parent="Control/TabContainer" unique_id=201043355]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+metadata/_tab_name = ""
+
+[node name="BoardManager" type="VBoxContainer" parent="Control/TabContainer" unique_id=4303316]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("4_ped2n")
+metadata/_tab_index = 4
+metadata/_tab_name = ""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/BoardManager" unique_id=2080894131]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/TabContainer/BoardManager/HBoxContainer" unique_id=271490169]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Search" type="LineEdit" parent="Control/TabContainer/BoardManager/HBoxContainer" unique_id=1073979491]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search Board"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/BoardManager/HBoxContainer" unique_id=1606579756]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AvailableBoardDropdown" parent="Control/TabContainer/BoardManager/HBoxContainer/HBoxContainer2" unique_id=196603451 instance=ExtResource("3_qtsi8")]
+custom_minimum_size = Vector2(230, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+button_width = 230.0
+popup_width = 230.0
+
+[node name="BoardTypeDropdown" parent="Control/TabContainer/BoardManager/HBoxContainer/HBoxContainer2" unique_id=437354553 instance=ExtResource("3_qtsi8")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoardManufacturerDropdown" parent="Control/TabContainer/BoardManager/HBoxContainer/HBoxContainer2" unique_id=182667566 instance=ExtResource("3_qtsi8")]
+layout_mode = 2
+size_flags_horizontal = 3
+popup_offset = Vector2(-50, 0)
+
+[node name="HSeparator" type="HSeparator" parent="Control/TabContainer/BoardManager/HBoxContainer/HBoxContainer2" unique_id=1222115974]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/BoardManager" unique_id=1339892404]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoardsContainer" type="VBoxContainer" parent="Control/TabContainer/BoardManager/ScrollContainer" unique_id=131192122]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="LibraryManager" type="VBoxContainer" parent="Control/TabContainer" unique_id=557452758]
+layout_mode = 2
+script = ExtResource("5_kbsv5")
+metadata/_tab_index = 5
+metadata/_tab_name = ""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TabContainer/LibraryManager" unique_id=1532474725]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/TabContainer/LibraryManager/HBoxContainer" unique_id=1878238491]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Search" type="LineEdit" parent="Control/TabContainer/LibraryManager/HBoxContainer" unique_id=1734926608]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search Library"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TabContainer/LibraryManager/HBoxContainer" unique_id=608140929]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LibraryType" parent="Control/TabContainer/LibraryManager/HBoxContainer/HBoxContainer2" unique_id=260351149 instance=ExtResource("3_qtsi8")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LibraryTopic" parent="Control/TabContainer/LibraryManager/HBoxContainer/HBoxContainer2" unique_id=986712380 instance=ExtResource("3_qtsi8")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddZipLibrary" type="Button" parent="Control/TabContainer/LibraryManager/HBoxContainer/HBoxContainer2" unique_id=1156589107]
+layout_mode = 2
+text = " Add ZIP Library "
+
+[node name="HSeparator" type="HSeparator" parent="Control/TabContainer/LibraryManager/HBoxContainer/HBoxContainer2" unique_id=1801132279]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/LibraryManager" unique_id=919270010]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LibrariesContainer" type="VBoxContainer" parent="Control/TabContainer/LibraryManager/ScrollContainer" unique_id=257101305]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="AiAssistant" type="HBoxContainer" parent="Control/TabContainer" unique_id=181552529]
+visible = false
+layout_mode = 2
+script = ExtResource("7_wk43d")
+metadata/_tab_index = 6
+metadata/_tab_name = ""
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/AiAssistant" unique_id=108421437]
+layout_mode = 2
+
+[node name="AINewChat" type="Button" parent="Control/TabContainer/AiAssistant/VBoxContainer" unique_id=998448236]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+icon = SubResource("AtlasTexture_lxkeg")
+flat = true
+expand_icon = true
+
+[node name="AISearch" type="Button" parent="Control/TabContainer/AiAssistant/VBoxContainer" unique_id=333231886]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+icon = SubResource("AtlasTexture_hyd7f")
+flat = true
+expand_icon = true
+
+[node name="AIRecent" type="Button" parent="Control/TabContainer/AiAssistant/VBoxContainer" unique_id=714943515]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+icon = SubResource("AtlasTexture_ja5wp")
+flat = true
+expand_icon = true
+
+[node name="AIModels" type="Button" parent="Control/TabContainer/AiAssistant/VBoxContainer" unique_id=1473168466]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 10
+icon = SubResource("AtlasTexture_o7n0d")
+flat = true
+expand_icon = true
+
+[node name="Settings" type="Button" parent="Control/TabContainer/AiAssistant/VBoxContainer" unique_id=816152792]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+icon = SubResource("AtlasTexture_qbvq2")
+flat = true
+expand_icon = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Control/TabContainer/AiAssistant" unique_id=1559286205]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offsets = PackedInt32Array(400)
+split_offset = 400
+
+[node name="AccessPanel" type="Panel" parent="Control/TabContainer/AiAssistant/HSplitContainer" unique_id=1355263357]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="AiRecent" parent="Control/TabContainer/AiAssistant/HSplitContainer/AccessPanel" unique_id=1552500975 instance=ExtResource("8_1kh42")]
+visible = false
+layout_mode = 1
+
+[node name="ModelList" parent="Control/TabContainer/AiAssistant/HSplitContainer/AccessPanel" unique_id=274876264 instance=ExtResource("9_v3ao4")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+offset_right = 0.0
+grow_horizontal = 2
+
+[node name="Chat" type="VBoxContainer" parent="Control/TabContainer/AiAssistant/HSplitContainer" unique_id=306936111]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Response" type="ScrollContainer" parent="Control/TabContainer/AiAssistant/HSplitContainer/Chat" unique_id=1413336299]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/AiAssistant/HSplitContainer/Chat/Response" unique_id=451782348]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AiAsk" type="TextEdit" parent="Control/TabContainer/AiAssistant/HSplitContainer/Chat" unique_id=1966408264]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_wk43d")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wk43d")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_wk43d")
+placeholder_text = "Ask "
+wrap_mode = 1
+caret_blink = true
+script = ExtResource("7_urw1y")
+min_height = 44.0
+
+[node name="Label" type="Label" parent="Control/TabContainer/AiAssistant/HSplitContainer/Chat" unique_id=1506095646]
+modulate = Color(0.37757778, 0.37757775, 0.37757772, 1)
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "AI Models can make mistakes"
+
+[node name="RightContainer" type="HBoxContainer" parent="Control" unique_id=1614901872]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -236.0
+offset_top = -8.0
+offset_bottom = 50.0
+grow_horizontal = 0
+
+[node name="Compile" type="Button" parent="Control/RightContainer" unique_id=564110535]
+custom_minimum_size = Vector2(60, 60)
+custom_maximum_size = Vector2(60, 60)
+layout_mode = 2
+icon = SubResource("AtlasTexture_pmne7")
+flat = true
+expand_icon = true
+
+[node name="Upload" type="Button" parent="Control/RightContainer" unique_id=1837712688]
+custom_minimum_size = Vector2(60, 60)
+custom_maximum_size = Vector2(60, 60)
+layout_mode = 2
+icon = SubResource("AtlasTexture_1vivr")
+flat = true
+expand_icon = true
+
+[node name="HSeparator2" type="HSeparator" parent="Control/RightContainer" unique_id=1161317367]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Undo" type="Button" parent="Control/RightContainer" unique_id=1598243079]
+modulate = Color(1, 0, 1, 1)
+custom_minimum_size = Vector2(55, 55)
+custom_maximum_size = Vector2(55, 55)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = SubResource("AtlasTexture_v3ao4")
+flat = true
+icon_alignment = 2
+expand_icon = true
+
+[node name="Redo" type="Button" parent="Control/RightContainer" unique_id=1805893708]
+modulate = Color(0, 1, 1, 1)
+custom_minimum_size = Vector2(55, 55)
+custom_maximum_size = Vector2(55, 55)
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(-1, 1)
+icon = SubResource("AtlasTexture_68cbr")
+flat = true
+icon_alignment = 2
+expand_icon = true
+
+[node name="MenuBar" type="MenuBar" parent="Control" unique_id=610783211]
+layout_mode = 1
+offset_left = 25.0
+offset_right = 420.0
+offset_bottom = 50.0

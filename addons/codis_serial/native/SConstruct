@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+# Build file for the CodisSerial GDExtension.
+#
+# Usage (from this `native/` folder):
+#   git clone -b 4.4 https://github.com/godotengine/godot-cpp godot-cpp
+#   scons platform=windows target=template_debug      # desktop debug
+#   scons platform=linux   target=template_release
+#   scons platform=android arch=arm64 target=template_release \
+#         ANDROID_NDK_ROOT=/path/to/ndk                 # Android
+#
+# Output lands in ../bin/<platform>/. Rename ../codis_serial.gdextension.example
+# to ../codis_serial.gdextension (already pointed at these paths) and the IDE's
+# "USB / Serial" upload backend becomes available automatically.
+
+import os
+
+env = SConscript("godot-cpp/SConstruct")
+env.Append(CPPPATH=["src/"])
+sources = Glob("src/*.cpp")
+
+suffix = ".{}.{}".format(env["platform"], env["target"])
+if env["platform"] == "macos":
+    library = env.SharedLibrary("../bin/macos/codis_serial{}{}".format(suffix, env["SHLIBSUFFIX"]), source=sources)
+elif env["platform"] == "android":
+    library = env.SharedLibrary("../bin/android/codis_serial.{}.{}.{}{}".format(
+        env["arch"], env["platform"], env["target"], env["SHLIBSUFFIX"]), source=sources)
+else:
+    library = env.SharedLibrary("../bin/{}/codis_serial{}{}".format(
+        env["platform"], suffix, env["SHLIBSUFFIX"]), source=sources)
+
+Default(library)

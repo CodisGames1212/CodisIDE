@@ -1,0 +1,27 @@
+; CodisSerial GDExtension descriptor.
+;
+; This file ships as ".example" ON PURPOSE: Godot loads every *.gdextension it
+; finds, and a descriptor pointing at a library that has not been built yet
+; produces startup errors. Build the extension first (see README.md), then
+; rename this file to `codis_serial.gdextension` and Godot will pick it up.
+;
+; Paths below match the output layout produced by native/SConstruct.
+
+[configuration]
+
+entry_symbol = "codis_serial_library_init"
+compatibility_minimum = "4.2"
+reloadable = true
+
+[libraries]
+
+windows.debug.x86_64 = "res://addons/codis_serial/bin/windows/codis_serial.windows.template_debug.dll"
+windows.release.x86_64 = "res://addons/codis_serial/bin/windows/codis_serial.windows.template_release.dll"
+linux.debug.x86_64 = "res://addons/codis_serial/bin/linux/codis_serial.linux.template_debug.so"
+linux.release.x86_64 = "res://addons/codis_serial/bin/linux/codis_serial.linux.template_release.so"
+macos.debug = "res://addons/codis_serial/bin/macos/codis_serial.macos.template_debug.dylib"
+macos.release = "res://addons/codis_serial/bin/macos/codis_serial.macos.template_release.dylib"
+android.debug.arm64 = "res://addons/codis_serial/bin/android/codis_serial.arm64.android.template_debug.so"
+android.release.arm64 = "res://addons/codis_serial/bin/android/codis_serial.arm64.android.template_release.so"
+android.debug.arm32 = "res://addons/codis_serial/bin/android/codis_serial.arm32.android.template_debug.so"
+android.release.arm32 = "res://addons/codis_serial/bin/android/codis_serial.arm32.android.template_release.so"

@@ -1,0 +1,3 @@
+[submodule "addons/codis_serial/native/godot-cpp"]
+	path = addons/codis_serial/native/godot-cpp
+	url = https://github.com/godotengine/godot-cpp.git

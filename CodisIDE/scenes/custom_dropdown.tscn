@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bms8861v1s62p"]
+
+[ext_resource type="Script" uid="uid://ddw0ffp1yoj8k" path="res://CodisIDE/scripts/custom_dropdown.gd" id="1_lqsgo"]
+
+[node name="CustomDropdown" type="Control" unique_id=98558066]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lqsgo")
+button_width = 200.0
+popup_width = 200.0

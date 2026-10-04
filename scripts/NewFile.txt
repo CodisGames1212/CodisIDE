@@ -1,0 +1,5 @@
+cd "C:\Users\Admin\Documents\Godot\codis-ide"
+$env:GODOT_CPP_DIR="C:\Users\Admin\Documents\Godot\codis-ide\addons\codis_serial\native\godot-cpp\build"
+$env:ANDROID_NDK_ROOT="C:\Users\Admin\AppData\Local\Android\Sdk\ndk\27.2.12479018"
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+& ".\scripts\build_everything.bat" *>&1 | Tee-Object build_log.txt

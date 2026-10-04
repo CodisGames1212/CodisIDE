@@ -1,0 +1,114 @@
+name: Build all platforms
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {name: Windows, os: windows-latest, native: windows, arch: x86_64, folder: windows}
+          - {name: Linux, os: ubuntu-22.04, native: linux, arch: x86_64, folder: linux}
+          - {name: macOS, os: macos-latest, native: macos, arch: universal, folder: macos}
+          - {name: Android, os: ubuntu-22.04, native: android, arch: arm64, folder: android}
+          - {name: iOS, os: macos-latest, native: '', arch: arm64, folder: ios}
+          - {name: Web, os: ubuntu-22.04, native: '', arch: wasm32, folder: web}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install SCons
+        run: python -m pip install scons==4.8.1
+      - name: Set up MSVC
+        if: matrix.native == 'windows'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+      - name: Set up Java
+        if: matrix.name == 'Android'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up Android SDK
+        if: matrix.name == 'Android'
+        uses: android-actions/setup-android@v3
+      - name: Install Android tools
+        if: matrix.name == 'Android'
+        shell: bash
+        run: |
+          sdkmanager 'platform-tools' 'build-tools;35.0.0' 'platforms;android-35' 'ndk;28.1.13356709'
+          echo "ANDROID_NDK_ROOT=$ANDROID_HOME/ndk/28.1.13356709" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> "$GITHUB_ENV"
+      - name: Install Godot and export templates
+        run: python scripts/ci_setup_godot.py
+      - name: Build native serial extension
+        if: matrix.native != ''
+        shell: bash
+        working-directory: addons/codis_serial/native
+        run: |
+          python -m SCons platform=${{ matrix.native }} arch=${{ matrix.arch }} target=template_debug api_version=4.7 -j2
+          python -m SCons platform=${{ matrix.native }} arch=${{ matrix.arch }} target=template_release api_version=4.7 -j2
+      - name: Configure Android editor settings
+        if: matrix.name == 'Android'
+        shell: bash
+        run: |
+          mkdir -p "$HOME/.config/godot"
+          cat > "$HOME/.config/godot/editor_settings-4.7.tres" <<EOF
+          [gd_resource type="EditorSettings" format=3]
+          [resource]
+          export/android/android_sdk_path = "$ANDROID_HOME"
+          export/android/java_sdk_path = "$JAVA_HOME"
+          EOF
+      - name: Export application
+        shell: bash
+        run: python scripts/ci_export.py '${{ matrix.name }}' --godot "$GODOT_BIN"
+      - name: Upload application
+        uses: actions/upload-artifact@v4
+        with:
+          name: CodisIDE-${{ matrix.name }}
+          path: dist/${{ matrix.folder }}/
+          if-no-files-found: error
+      - name: Upload native libraries
+        if: matrix.native != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: CodisSerial-${{ matrix.name }}
+          path: addons/codis_serial/bin/${{ matrix.native }}/
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: CodisIDE-*
+      - name: Package and publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir packages
+          for artifact in artifacts/*; do
+            name=$(basename "$artifact")
+            (cd "$artifact" && zip -r "$GITHUB_WORKSPACE/packages/$name.zip" .)
+          done
+          gh release create "$GITHUB_REF_NAME" packages/*.zip --repo "$GITHUB_REPOSITORY" --generate-notes

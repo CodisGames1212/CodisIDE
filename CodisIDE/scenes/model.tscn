@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://bmyf0rk0h0hd7"]
+
+[ext_resource type="Script" uid="uid://c6lj3f65reg2n" path="res://CodisIDE/scripts/model.gd" id="1_iulf4"]
+[ext_resource type="Texture2D" uid="uid://djrahu8l712kc" path="res://CodisIDE/assets/textures/CodisIDE_Icons.png" id="2_eyy1e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pw6o"]
+atlas = ExtResource("2_eyy1e")
+region = Rect2(95.00099, 120.45875, 82.81291, 84.57583)
+
+[node name="Model" type="Control" unique_id=746017748]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_iulf4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=777646392]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ModelName" type="Label" parent="VBoxContainer" unique_id=2058096221]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Gemma - 4"
+visible_characters = 30
+visible_ratio = 3.3333333
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1065724576]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=1473106269]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer3/HBoxContainer" unique_id=1815754585]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_3pw6o")
+expand_mode = 1
+
+[node name="Storage" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer" unique_id=369629448]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "2.5GB"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=2131088440]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer3/HBoxContainer2" unique_id=1969787261]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_3pw6o")
+expand_mode = 1
+
+[node name="RAM" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer2" unique_id=1487418259]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "8GB"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3" unique_id=913419566]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer3/HBoxContainer3" unique_id=1971006535]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_3pw6o")
+expand_mode = 1
+
+[node name="Paramenter" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer3" unique_id=1561087712]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "2B"
+
+[node name="Description" type="Label" parent="VBoxContainer" unique_id=1500000001]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No description available."
+autowrap_mode = 2
+max_lines_visible = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=2082604192]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="LearnMore" type="LinkButton" parent="VBoxContainer/HBoxContainer2" unique_id=1512881201]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0.8745098, 1)
+theme_override_font_sizes/font_size = 13
+text = "Learn More"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer2" unique_id=2119139635]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Install" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=300172229]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 9
+theme_override_constants/icon_max_width = 25
+theme_override_font_sizes/font_size = 16
+text = "Install"
+icon = SubResource("AtlasTexture_3pw6o")
+alignment = 0
