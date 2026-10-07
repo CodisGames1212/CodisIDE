@@ -2,7 +2,7 @@
 
 CodisIDE is a Godot-based embedded development environment for Arduino-style firmware workflows. It combines a lightweight IDE UI, board and library management, compile and upload tooling, serial monitoring, and optional local/online AI assistance in one project.
 
-The project is designed to feel like a cross-platform maker IDE while keeping a Godot editor-first workflow. It includes a Godot editor plugin so the IDE can be launched directly from the editor, plus native serial extension support for real board communication on desktop and mobile targets.
+The project is designed to feel like a cross-platform maker IDE while keeping a Godot editor-first workflow. It includes native serial extension support for real board communication on desktop and mobile targets.
 
 ## Highlights
 
@@ -11,7 +11,6 @@ The project is designed to feel like a cross-platform maker IDE while keeping a 
 - Compile and upload workflows for connected devices
 - Serial monitor and serial plotter views
 - Offline-first AI workflow with local model support and cloud providers
-- Godot editor plugin to open the app data folder or launch the IDE
 - Native addon support for serial and platform-specific integrations
 - CMake-based build pipeline for desktop and Android artifacts
 
@@ -30,7 +29,6 @@ CodisIDE aims to provide a practical, self-contained workflow for hardware proje
 ```text
 .
 ├── addons/
-│   ├── codis_ide/              # Godot plugin that adds IDE launcher entries
 │   └── codis_serial/           # Native serial GDExtension and related docs
 ├── android/                    # Android-specific build scaffolding
 ├── build/                      # Generated CMake build outputs
@@ -57,7 +55,6 @@ CodisIDE aims to provide a practical, self-contained workflow for hardware proje
 - `CodisIDE/scripts/code_editor.gd` — editor behavior and sketch handling
 - `CodisIDE/scripts/upload/` — upload backend implementations
 - `CodisIDE/scripts/ai/` — AI provider integrations and model access
-- `addons/codis_ide/plugin.gd` — editor plugin that can launch the IDE from Godot
 - `addons/codis_serial/` — native serial backend for true USB/serial support
 
 ## Features in practice
@@ -166,7 +163,7 @@ python scripts/ci_export.py Linux --godot /path/to/godot
 
 Ziva is optional editor tooling. Its large platform binaries are excluded from
 source control and runtime packages. To enable it locally, install its dependencies
-and copy `ziva_agent.gdextension.example` to `ziva_agent.gdextension`.
+and obtain its GDExtension descriptor from the Ziva distribution.
 
 ## License
 

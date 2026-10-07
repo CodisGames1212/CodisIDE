@@ -32,7 +32,7 @@ window/handheld/orientation=6
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/codis_ide/plugin.cfg")
+enabled=PackedStringArray()
 
 [input_devices]
 
